@@ -1,0 +1,34 @@
+<div class="container">
+	<h3>List Category</h3>
+	<table class='table'>
+		<tr>
+			
+			
+			<th>Category Name</th>
+			<th>Category Description </th>
+			<th>Image</th>
+			<th></th>
+			<th></th>
+			<th></th>
+		</tr>
+		
+
+		<% _.each(categories, function(Category) { %>
+		<tr data-id="<%= Category.id %>" data-model="category">
+			
+			<td><%= Category.categoryName %></td>
+			<td><%= Category.categoryDescription %></td>
+			<td><img src="/images/<%= Category.categoryImage %>"  height="100" width="100"></td>	
+			<td><a href="/admin/category/show/<%= Category.id %>" class="btn btn-sm btn-primary">Show</a></td>
+			<td><a href="/admin/category/edit/<%= Category.id %>" class="btn btn-sm btn-warning">Edit</a></td>
+
+			<td><form action="/admin/category/destroy/<%= Category.id %>" method="POST">
+				<input type="hidden" name="_method" value="delete"/>
+				<input type="submit" class="btn btn-sm btn-danger" value="Delete"/>
+				
+			</form></td>
+		</tr> 
+
+		<% }) %>
+	</table>
+</div>

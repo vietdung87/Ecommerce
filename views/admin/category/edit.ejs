@@ -1,0 +1,43 @@
+<div class="container">
+  <h2 id="test">Add new Category</h2>
+  <form  id="sign-up-form" class="form-horizontal" role="form" enctype="multipart/form-data"
+      action="/admin/category/update/<%= category.id %>"
+      method="post">
+      
+      <% if(res.locals.flash && res.locals.flash.err) { %>
+      <ul class="alert alert-success">
+      <% Object.keys(res.locals.flash.err).forEach(function(error) { %>
+      <li><%- JSON.stringify(res.locals.flash.err[error]) %></li>
+      <% }) %>
+      </ul>
+      <% } %>
+      
+    <div class="form-group" >
+      <label class="control-label col-sm-2" >Category Name:</label>
+      <div class="col-sm-10">
+        <input type="text"  class="form-control" id="categoryName" name="categoryName"  value="<%= category.categoryName %>"/>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" >Category Description:</label>
+      <div class="col-sm-10">          
+        <input type="text" class="form-control" id="categoryDescription" name="categoryDescription"  value="<%= category.categoryDescription %>">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" >Upload Image :</label>
+      <div class="col-sm-10">          
+        <input type="file" class="form-control" id="categoryImage" name="categoryImage" / >
+        <img src="/images/<%= category.categoryImage %>"  height="100" width="100">
+      </div>
+    </div>
+
+
+    
+    <div class="form-group">        
+      <div class="col-sm-offset-2 col-sm-10">
+        <input type="submit" value="Proceed" class="btn btn-lg btn-primary btn-block"/>
+      </div>
+    </div>
+  </form>
+</div>
